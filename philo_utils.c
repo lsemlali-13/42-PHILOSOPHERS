@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsemlali <lsemlali@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/23 11:22:35 by lsemlali          #+#    #+#             */
+/*   Updated: 2022/12/23 11:50:04 by lsemlali         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 void	add_front(t_philo **philo, t_philo *head)
 {
-	t_philo *tmp;
+	t_philo	*tmp;
 
 	head->next_philo = NULL;
 	if (!*philo)
@@ -29,11 +41,11 @@ void	check_info(int ac, t_info *info)
 
 void	ending_sum(t_philo **ph)
 {
-	int	i;
 	t_philo	*tmp;
-    int k;
+	int		i;
+	int		k;
 
-    k = (*ph)->ph_info->nbr_of_philos;
+	k = (*ph)->ph_info->nbr_of_philos;
 	i = 0;
 	pthread_mutex_destroy(&(*ph)->ph_info->print_lock);
 	pthread_mutex_destroy(&(*ph)->ph_info->meal_lock);
@@ -50,10 +62,10 @@ void	ending_sum(t_philo **ph)
 
 void	philo_init(t_philo **ph, t_info **info)
 {
-	int	i;
-	int	k;
 	t_philo	*tmp;
 	t_philo	*save;
+	int		k;
+	int		i;
 
 	i = 0;
 	k = (*info)->nbr_of_philos;

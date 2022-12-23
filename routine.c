@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   routine.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsemlali <lsemlali@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/23 11:38:56 by lsemlali          #+#    #+#             */
+/*   Updated: 2022/12/23 15:32:24 by lsemlali         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
-long long int curr_time(t_philo *ph)
+long long int	curr_time(t_philo *ph)
 {
-	struct timeval tv;
-	int	curr;
+	struct timeval	tv;
+	int				curr;
 
 	gettimeofday(&tv, NULL);
-	curr = (tv.tv_sec * 1000000 + tv.tv_usec) / 1000 - ph->ph_info->time_init;
+	curr = ((tv.tv_sec * 1000000 + tv.tv_usec) / 1000) - ph->ph_info->time_init;
 	return (curr);
 }
 
@@ -31,10 +43,12 @@ void	eating_rt(t_philo *ph)
 	pthread_mutex_unlock(&(ph->ph_fork));
 	pthread_mutex_unlock(&(ph->next_philo->ph_fork));
 }
-void *ph_routine(void * philo)
-{
-	t_philo	*ph = (t_philo *) philo;
 
+void	*ph_routine(void *philo)
+{
+	t_philo	*ph;
+
+	ph = (t_philo *) philo;
 	while (1)
 	{
 		eating_rt(ph);

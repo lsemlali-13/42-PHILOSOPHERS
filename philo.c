@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsemlali <lsemlali@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/23 11:00:05 by lsemlali          #+#    #+#             */
+/*   Updated: 2022/12/23 11:51:30 by lsemlali         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 void	ph_supervisor(t_philo **philo)
@@ -5,7 +17,8 @@ void	ph_supervisor(t_philo **philo)
 	while (*philo)
 	{
 		pthread_mutex_lock(&(*philo)->ph_info->meal_lock);
-		if (curr_time(*philo) - (*philo)->time_since_last_meal > (*philo)->ph_info->time_to_die)
+		if ((curr_time(*philo) - (*philo)->time_since_last_meal) \
+		> (*philo)->ph_info->time_to_die)
 		{
 			pthread_mutex_lock(&((*philo)->ph_info->print_lock));
 			printf("%lld %d has died\n", curr_time(*philo), (*philo)->id);
@@ -20,15 +33,15 @@ void	ph_supervisor(t_philo **philo)
 	}
 }
 
-void create_threads(t_philo **philo)
+void	create_threads(t_philo **philo)
 {
 	int	i;
 	int	k;
 
-	i = 0; 
+	i = 0;
 	k = (*philo)->ph_info->nbr_of_philos;
 	(*philo)->ph_info->time_init = curr_time(*philo);
-	(*philo)->ph_info->current_t = curr_time(*philo) - (*philo)->ph_info->time_init;
+	(*philo)->ph_info->current_t = curr_time(*philo);
 	while (i < k)
 	{
 		pthread_create(&((*philo)->t), NULL, ph_routine, *philo);
@@ -42,8 +55,8 @@ void create_threads(t_philo **philo)
 int	main(int ac, char **av)
 {
 	t_info	*info;
-	t_philo *philo;
-	int	i;
+	t_philo	*philo;
+	int		i;
 
 	get_info(ac, av, &info);
 	check_info(ac, info);

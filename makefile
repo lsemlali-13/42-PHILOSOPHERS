@@ -1,6 +1,6 @@
 CFLAGS = -Wall -Wextra -Werror
-CC = cc #-g -fsanitize=thread
-SRC = philo.c libft/libft.a
+CC = cc
+SRC = philo.c ft_atoi.c philo_utils.c routine.c
 
 NAME = philo
 OBJ = $(SRC:.c=.o)

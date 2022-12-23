@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lsemlali <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lsemlali <lsemlali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/22 13:24:27 by lsemlali          #+#    #+#             */
-/*   Updated: 2021/11/29 10:23:32 by lsemlali         ###   ########.fr       */
+/*   Created: 2022/12/23 11:26:03 by lsemlali          #+#    #+#             */
+/*   Updated: 2022/12/23 11:26:04 by lsemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "philo.h"
 
 static int	my_atoi(const char *str)
 {

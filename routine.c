@@ -39,7 +39,7 @@ void	eating_rt(t_philo *ph)
 	pthread_mutex_lock(&ph->ph_info->meal_lock);
 	ph->time_since_last_meal = curr_time(ph);
 	pthread_mutex_unlock(&ph->ph_info->meal_lock);
-	usleep(ph->ph_info->time_to_eat * 1000);
+	u_sleep(ph, ph->ph_info->time_to_eat);
 	pthread_mutex_unlock(&(ph->ph_fork));
 	pthread_mutex_unlock(&(ph->next_philo->ph_fork));
 }
@@ -55,7 +55,7 @@ void	*ph_routine(void *philo)
 		pthread_mutex_lock(&(ph->ph_info->print_lock));
 		printf("%lld %d is sleeping\n", curr_time(ph), ph->id);
 		pthread_mutex_unlock(&(ph->ph_info->print_lock));
-		usleep(ph->ph_info->time_to_sleep * 1000);
+		u_sleep(ph, ph->ph_info->time_to_sleep);
 		pthread_mutex_lock(&(ph->ph_info->print_lock));
 		printf("%lld %d is thinking\n", curr_time(ph), ph->id);
 		pthread_mutex_unlock(&(ph->ph_info->print_lock));

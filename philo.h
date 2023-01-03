@@ -6,7 +6,7 @@
 /*   By: lsemlali <lsemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 11:00:05 by lsemlali          #+#    #+#             */
-/*   Updated: 2022/12/23 15:20:06 by lsemlali         ###   ########.fr       */
+/*   Updated: 2023/01/03 08:10:48 by lsemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ void			get_info(int ac, char **av, t_info **info);
 long long int	curr_time(t_philo *ph);
 void			*ph_routine(void *philo);
 void			eating_rt(t_philo *ph);
+void			u_sleep(t_philo *ph, int time);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lsemlali <lsemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 11:22:35 by lsemlali          #+#    #+#             */
-/*   Updated: 2022/12/23 11:50:04 by lsemlali         ###   ########.fr       */
+/*   Updated: 2023/01/03 08:12:19 by lsemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,13 @@ void	check_info(int ac, t_info *info)
 void	ending_sum(t_philo **ph)
 {
 	t_philo	*tmp;
+	t_info	*inf;
 	int		i;
 	int		k;
 
 	k = (*ph)->ph_info->nbr_of_philos;
 	i = 0;
-	pthread_mutex_destroy(&(*ph)->ph_info->print_lock);
-	pthread_mutex_destroy(&(*ph)->ph_info->meal_lock);
-	free((*ph)->ph_info);
+	inf = (*ph)->ph_info;
 	while (i < k)
 	{
 		tmp = (*ph)->next_philo;
@@ -58,6 +57,10 @@ void	ending_sum(t_philo **ph)
 		*ph = tmp;
 		i++;
 	}
+	pthread_mutex_destroy(&inf->print_lock);
+	pthread_mutex_destroy(&inf->meal_lock);
+	free(inf);
+	exit(0);
 }
 
 void	philo_init(t_philo **ph, t_info **info)
